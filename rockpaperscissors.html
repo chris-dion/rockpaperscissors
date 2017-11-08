@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var wins = 0;
+		var loss = 0;
+		var ties = 0;
+		//holds event.key
+		var userInput = 0;
+		var computerInput = 0;
+		var character = "";
+		var compCharacter = "";
+		//generates computers choice
+		function getRandomInt(min, max){
+			
+			return Math.floor(Math.random()*(max-min+1))+min;
+		}
+
+		document.onkeyup = function(event){
+			//wait for user to press r = rock = 1, s = scissors = 3, p = paper = 2 and assigns corresponding number
+			if (event.key == "r"){
+				userInput = 1;
+				character = "r";
+				rps();
+
+			}else if (event.key == "p"){
+				userInput = 2;
+				character = "p";
+				rps();
+				
+			}else if (event.key == "s"){
+				userInput = 3;
+				character = "s";
+				rps();
+			}
+			
+		}
+
+		function rps(){		
+			//setting computer input randomly
+			computerInput = getRandomInt(1,3);
+
+			if (computerInput == 1){
+				compCharacter="r";
+
+			}else if(computerInput==2){
+				compCharacter="p";
+			}
+			else {
+				compCharacter="s";
+			}
+
+			console.log("the computerinput is ")
+
+			//wins	
+			if ((userInput == 1 && computerInput == 3) || (userInput == 3 && computerInput == 2) || (userInput == 2 && computerInput == 1)){
+				console.log("win")
+				wins++;
+			}//loss
+			else if ((userInput == 3 && computerInput == 1) || (userInput == 2 && computerInput == 3) || (userInput == 1 && computerInput == 2)){
+				loss++;
+				console.log("loss")
+
+			}
+			//tie
+			else{
+				console.log("ties")
+				ties++;
+			}
+			document.write("You choose: "+ character + "<br>" +"The Computer Choice: " + computerInput + "<br>" + "Wins: " + wins + "<br>" + "Loss: " +loss+ "<br>" + "Ties: " + ties );
+
+		}
+
+	</script>
+
+
+</body>
+</html>
